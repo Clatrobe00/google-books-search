@@ -15,7 +15,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-
+const Routes = require('./routes/bookRoutes')
+app.use(Routes);
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
