@@ -6,9 +6,10 @@ const SearchResult = (props) => {
             <h4>{props.title}</h4>
             <h5>{props.authors}</h5>
             <p>{props.description}</p>
-            <a href={props.link}>More info here</a>
+            {/* <a href={props.link}>More info here</a> */}
             <img src={props.image} />
             <button>Save this result!</button>
+            <button href={props.link} rel='noreferrer' target='_blank'>View this result!</button>
         </div>
     )
 }

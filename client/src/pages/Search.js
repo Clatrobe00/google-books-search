@@ -34,7 +34,7 @@ console.log('updated results are', searchResults)
         <div>
             {searchResults[0] ? searchResults.map(volume => {
                 return (
-                    <SearchResult title={volume.volumeInfo.title} authors={volume.volumeInfo.authors} description={volume.volumeInfo.description} image={volume.volumeInfo.imageLinks.smallThumbnail} link={volume.volumeInfo.infoLink} />
+                    <SearchResult title={volume.volumeInfo.title} authors={volume.volumeInfo.authors} description={volume.volumeInfo.description} image={volume.volumeInfo.imageLinks ? volume.volumeInfo.imageLinks.thumbnail : <p>no image</p>} link={volume.volumeInfo.infoLink} />
                 )
             }) : <h1>No Results Yet</h1>}
         </div>
