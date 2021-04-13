@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SearchResult from '../components/SearchResult';
 
 const Search = () => {
 
@@ -31,7 +32,11 @@ console.log('updated results are', searchResults)
             <button onClick={handleSubmit}>Submit</button>
         </div>    
         <div>
-            {searchResults[0] ? <div>Results will be here</div> : <h1>No Results Yet</h1>}
+            {searchResults[0] ? searchResults.map(volume => {
+                return (
+                    <SearchResult title={volume.volumeInfo.title} authors={volume.volumeInfo.authors} description={volume.volumeInfo.description} image={volume.volumeInfo.imageLinks.smallThumbnail} link={volume.volumeInfo.infoLink} />
+                )
+            }) : <h1>No Results Yet</h1>}
         </div>
     </div>
     )
