@@ -42,13 +42,12 @@ Router.post("/api/books", async (req, res) => {
 
 Router.delete('/api/books/:id', async (req, res) => {
     res.send('Got a DELETE request at /user')
-    Books.deleteOne({ id: req.params.id })
-        .then((data) => {
-            res.json('deleted', data, 'deleted')
-        })
-        .catch((err) => {
-            res.json(err)
-        })
+    Books.findOneAndRemove({ _id: req.params.id }, req.body, function(err,data)
+    {
+        if(!err){
+            console.log("Deleted");
+        }
+    });
 })    
 
 Router.get('*', async (req, res) => {
