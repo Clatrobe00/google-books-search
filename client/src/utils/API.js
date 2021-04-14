@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const postBook = (data) => {
-  return axios
+export default {
+  saveBook: function (data) {
+    return axios
     .post("/api/books", {
       title: data.title,
       authors: data.authors,
@@ -11,11 +12,12 @@ const postBook = (data) => {
     })
     .then(function (response) {
       console.log(response);
-      alert('Saved!')
+      alert('Book Saved')
     })
     .catch(function (error) {
       console.log(error);
     })
 }
 
-export default postBook;
+}
+

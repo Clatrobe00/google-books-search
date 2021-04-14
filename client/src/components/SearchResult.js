@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import postBook from '../utils/API'
+import API from '../utils/API'
 
 const SearchResult = (props) => {
 
@@ -14,7 +14,7 @@ const SearchResult = (props) => {
             image: props.image, 
             link: props.link}
         setSavedSearch(newBook)
-        postBook(newBook);
+        API.saveBook(newBook);
     }
 
     console.log('savedSearch is', savedSearch);
