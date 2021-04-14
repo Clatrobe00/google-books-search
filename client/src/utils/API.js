@@ -17,6 +17,10 @@ export default {
     .catch(function (error) {
       console.log(error);
     })
+},
+
+getBooks: function () {
+  return axios.get('/api/books')
 }
 
 }
