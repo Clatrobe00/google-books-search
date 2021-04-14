@@ -15,7 +15,8 @@ const Saved = () => {
                 authors: item.authors,
                 desciption: item.description,
                 image: item.image,
-                link: item.link
+                link: item.link,
+                id: item._id
             })
             })
         setSavedBook(list);    
@@ -23,7 +24,7 @@ const Saved = () => {
     }, [])
     console.log('saved is', savedBook)
     const RenderSavedBooks = savedBook.map((book) => (
-        <div>
+        <div key={book.id}>
             <h4>{book.title}</h4>
             <h5>{book.authors}</h5>
             <p>{book.desciption}</p>
