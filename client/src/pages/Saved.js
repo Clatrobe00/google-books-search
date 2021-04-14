@@ -22,7 +22,17 @@ const Saved = () => {
         setSavedBook(list);    
         })
     }, [])
-    console.log('saved is', savedBook)
+
+    const handleDeleteClick = (event) => {
+        event.preventDefault();
+        console.log('deleted!', event.target.value)
+        API.deleteBook(event.target.value)
+        setSavedBook(savedBook.filter((book) => {
+            return book.id !== event.target.value; 
+        }))
+    
+    }
+
     const RenderSavedBooks = savedBook.map((book) => (
         <div key={book.id}>
             <h4>{book.title}</h4>
@@ -30,6 +40,7 @@ const Saved = () => {
             <p>{book.desciption}</p>
             <img src={book.image} />
             <a href={book.link} />
+            <button value={book.id} onClick={handleDeleteClick}>Delete</button>
         </div>
 
     ))

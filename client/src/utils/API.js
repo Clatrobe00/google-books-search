@@ -24,7 +24,16 @@ getBooks: function () {
 },
 
 deleteBook: function (id) {
-  return axios.delete(`/api/books/${id}`)
+  console.log('id is', id);
+  const URL = `/api/books/${id}`
+  return axios
+  .delete(URL)
+  .then( function (response) {
+    console.log('deleted', response)
+  })
+  .catch(function (err) {
+    console.log(err);
+  })
 }
 
 }
