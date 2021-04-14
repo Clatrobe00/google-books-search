@@ -14,16 +14,30 @@ Router.get("/api/books", async (req, res) => {
   });
   
 Router.post("/api/books", async (req, res) => {
-    console.log(req.body)
-    const book = new Books(req.body)
-    Books.create(book)
-        .then((newBook) => {
-            res.json(newBook);
-        })
-        .catch((err) => {
-            res.json(err);
-          });
-
+    console.log('recieved post request')
+    console.log('req.body is', req.body)
+    try {
+    const book = await Books.create({
+      title: req.body.title,
+      authors: req.body.authors,
+      description: req.body.description,
+      image: req.body.image,
+      link: req.body.link,
+    })
+    console.log('inserted');
+    res.json(book);
+    }
+    catch (err) {
+      console.log(err);
+      res.json(err)
+    }
+    // Books.create(book)
+    //   .then(() => {
+    //     console.log('inserted!')
+    //   })
+    //   .catch((err) => {
+    //     res.json(err)
+    //   })
     });
 
 Router.delete('/api/books/:id', async (req, res) => {
